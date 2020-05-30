@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DATA1700 U3 Bokhandler</title>
+    <script type="application/javascript">
+
+        function velg() {
+            let out  = document.getElementById("forfatter").value;
+            document.getElementById("test").innerHTML=out;
+            if(out==="----"){
+                document.getElementById("output").innerHTML="Må velge forfatter!";
+            }else {
+                if(out==="Nesbø"){
+                    document.getElementById("output").innerHTML= "Tørst <input type='checkbox' name='boker' value='Tørst'><br> "+
+                        "Snømannen <input type='checkbox' name='boker' value='Snømannen'><br>";
+                    document.getElementById("velgBoker").innerHTML="<button onclick='velgBoker()'>Velg bøker</button>";
+                }else{
+                    if(out==="Horst"){
+                        document.getElementById("output").innerHTML="Bunnfall <input type='checkbox' name='boker' value='Bunnfall'><br>"+
+                                "Blindgang <input type='checkbox' name='boker' value='Blindgang'><br>";
+                        document.getElementById("velgBoker").innerHTML="<button onclick='velgBoker()'>Velg bøker</button>";
+                    }
+                }
+            }
+        }
+
+        function velgBoker() {
+            let ut = "Bøkene valgt er:";
+               const bokArray = document.getElementsByName("boker");
+
+            for(let bok of bokArray){
+                if(bok.checked){
+                    ut+=bok.value+" ";
+                }
+            }
+
+            document.getElementById("valgt").innerHTML=ut;
+        }
+
+    </script>
+</head>
+<body>
+
+    <h3>Kjøp bøker</h3>
+
+    <select id="forfatter" onchange="velg()">
+        <option>----</option>
+        <option>Nesbø</option>
+        <option>Horst</option>
+    </select>
+
+    <div id="output"></div>
+    <div id="velgBoker"></div>
+    <div id="test">test</div>
+    <div id="valgt"></div>
+</body>
+</html>
